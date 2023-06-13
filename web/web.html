@@ -1,148 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+  
   <title>小畫家</title>
-  <style>
-    .title {
-      display: flex;
-      position: absolute;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-    
-    .title img {
-      width: 60px;
-      margin-right: 6px;
-    }
-    
-    .title h1 {
-      font-size: 24px;
-      font-weight: bold;
-    }
-    
-    .area {
-      position: relative;
-      height: 100vh;
-    }
-    
-    #canvas {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      border: 1px solid black;
-    }
-    
-    .upload {
-      position: absolute;
-      top: 50px;
-      left: 100px;
-    }
-    
-    .brush-size-container {
-      position: absolute;
-      top: 100px;
-      left: 100px;
-    }
-    
-    .buttonerase {
-      position: absolute;
-      top: 150px;
-      left: 100px;
-    }
-    
-    .color-picker-container {
-      position: absolute;
-      top: 250px;
-      left: 100px;
-    }
-    
-    .buttonclean {
-      position: absolute;
-      bottom: 50px;
-      left: 45%;
-      transform: translateX(-50%);
-    }
-    
-    .buttonsave {
-      position: absolute;
-      bottom: 50px;
-      left: 55%;
-      transform: translateX(-50%);
-    }
-    
-    .tool {
-      position: absolute;
-      top: 350px;
-      left: 20px;
-      text-align: center;
-      font-size: 12px;
-      font-weight: bold;
-    }
-    
-    .tool button {
-      margin-right: 20px;
-    }
-    
-    #eraserButton {
-      background-image: url('eraser.jpg');
-      background-size: contain;
-      background-repeat: no-repeat;
-      border: 1px solid black;
-      width: 50px;
-      height: 50px;
-    }
-    
-    #reactButton {
-      background-image: url('Rect.jpg');
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-      background-color: rgb(255, 255, 255);
-      border: none;
-      width: 55px;
-      height: 50px;
-    }
-    
-    #circleButton {
-      background-image: url('circle.png');
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-      background-color: rgb(255, 255, 255);
-      border: none;
-      width: 55px;
-      height: 50px;
-    }
-    
-    #lineButton {
-      background-image: url('line.png');
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-      background-color: rgb(255, 255, 255);
-      border: none;
-      width: 55px;
-      height: 50px;
-    }
-    
-    #eraserButton.active {
-      border: 5px solid black;
-    }
-    
-    #reactButton.active {
-      background-color: rgb(172, 172, 172);
-    }
-    
-    #circleButton.active {
-      background-color: rgb(172, 172, 172);
-    }
-    
-    #lineButton.active {
-      background-color: rgb(172, 172, 172);
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
   <div class="title">
@@ -165,6 +27,7 @@
   <div class="brush-size-container">
     <label for="brushSizeRange" class="brush-size-label">筆刷大小</label>
     <input type="range" id="brushSizeRange" min="1" max="50" value="5" onchange="changeBrushSize(this.value)">
+    <span id="brushSizeValue">5</span>
   </div>
   
   <div class="color-picker-container">
@@ -185,6 +48,7 @@
     <button id="circleButton" onclick="enableCircleTool()"></button>
     <button id="lineButton" onclick="enableLineTool()"></button>
   </div>
+  
   
   <script src="main.js"></script>
 </body>

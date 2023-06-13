@@ -104,12 +104,8 @@ function enableEraser() {
 
 function changeBrushSize(size) {
   brushSize = parseInt(size);
+  document.getElementById('brushSizeValue').textContent = size;
 }
-
-const straightLineCheckbox = document.getElementById('straightLine');
-straightLineCheckbox.addEventListener('change', () => {
-  isStraightLine = straightLineCheckbox.checked;
-});
 
 function enableRectangleTool() {
   isRectangle = !isRectangle;
@@ -197,4 +193,29 @@ function handleImageUpload(event) {
   };
 
   reader.readAsDataURL(file);
+}
+
+var isTextToolEnabled = false;
+var textInput = document.getElementById('textInput');
+
+function enableTextTool() {
+  isTextToolEnabled = !isTextToolEnabled;
+  canvas.style.cursor = isTextToolEnabled ? 'text' : 'default';
+
+  if (isTextToolEnabled) {
+    canvas.addEventListener('mousedown', startTextDrawing);
+  } else {
+    canvas.removeEventListener('mousedown', startTextDrawing);
+  }
+}
+
+function startTextDrawing(e) {
+  if (isTextToolEnabled) {
+    var text = textInput.value;
+    var x = e.clientX - canvas.getBoundingClientRect().left;
+    var y = e.clientY - canvas.getBoundingClientRect().top;
+    context.font = '20px Arial';
+    context.fillStyle = brushColor;
+    context.fillText(text, x, y);
+  }
 }
